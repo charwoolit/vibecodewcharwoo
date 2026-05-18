@@ -619,6 +619,292 @@
     color: var(--accent);
   }
 
+  /* SCROLLABLE RESULTS */
+  .results-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  #job-list {
+    overflow-y: auto;
+    max-height: 310px;
+    padding-right: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #job-list::-webkit-scrollbar { width: 4px; }
+  #job-list::-webkit-scrollbar-track { background: transparent; }
+  #job-list::-webkit-scrollbar-thumb { background: var(--border-medium); border-radius: 2px; }
+
+  /* COMPANY LOGO IMG */
+  .company-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    padding: 3px;
+  }
+
+  .company-logo .logo-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 8px;
+  }
+
+  /* POSTED DATE */
+  .posted-date {
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 2px;
+  }
+
+  /* JOB DETAIL DRAWER */
+  .job-drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,15,16,0.45);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .job-drawer-overlay.open { display: flex; }
+
+  .job-drawer {
+    background: var(--surface-raised);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    width: 100%;
+    max-width: 680px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 36px 40px 48px;
+    animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    position: relative;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .drawer-handle {
+    width: 36px; height: 4px;
+    background: var(--border-medium);
+    border-radius: 2px;
+    margin: 0 auto 28px;
+  }
+
+  .drawer-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .drawer-logo {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .drawer-logo img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    padding: 4px;
+  }
+
+  .drawer-logo .logo-fallback {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 12px;
+  }
+
+  .drawer-title-group { flex: 1; }
+
+  .drawer-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+
+  .drawer-company {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  .drawer-close {
+    background: var(--surface-subtle);
+    border: none;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--ink-soft);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+
+  .drawer-close:hover { background: var(--border-medium); }
+
+  .drawer-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .drawer-badge {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+
+  .drawer-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .drawer-stat {
+    background: var(--surface-subtle);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+  }
+
+  .drawer-stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--ink-muted);
+    margin-bottom: 4px;
+  }
+
+  .drawer-stat-value {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .drawer-section-title {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+  }
+
+  .drawer-description {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .drawer-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .skill-pill {
+    font-size: 12px;
+    padding: 5px 12px;
+    border: 1px solid var(--border-medium);
+    border-radius: 100px;
+    color: var(--ink-soft);
+  }
+
+  .drawer-match-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 14px 16px;
+    background: var(--green-pale);
+    border-radius: var(--radius-md);
+  }
+
+  .drawer-match-pct {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green);
+    font-family: var(--font-display);
+  }
+
+  .drawer-match-label {
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 400;
+  }
+
+  .drawer-actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  .drawer-apply {
+    flex: 1;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    padding: 14px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .drawer-apply:hover { background: var(--accent-dark); }
+
+  .drawer-save {
+    background: var(--surface-subtle);
+    color: var(--ink-soft);
+    border: 1px solid var(--border-medium);
+    border-radius: 100px;
+    padding: 14px 22px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .drawer-save:hover { border-color: var(--ink); color: var(--ink); }
+
   /* FEATURES STRIP */
   .features-strip {
     padding: 80px 5% 0;
@@ -1037,7 +1323,7 @@
 
       <div class="preview-body">
         <!-- FILTERS SIDEBAR -->
-        <div class="sidebar">
+        <div class="sidebar" style="overflow-y:auto;max-height:380px;padding-right:4px;">
           <div class="filter-group">
             <p class="sidebar-label">Job type</p>
             <div class="chip-group">
@@ -1056,6 +1342,17 @@
               <span class="chip" onclick="toggleChip(this)">Finance</span>
               <span class="chip active" onclick="toggleChip(this)">Marketing</span>
               <span class="chip" onclick="toggleChip(this)">Healthcare</span>
+              <span class="chip" onclick="toggleChip(this)">Legal</span>
+              <span class="chip" onclick="toggleChip(this)">Education</span>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <p class="sidebar-label">Experience level</p>
+            <div class="chip-group">
+              <span class="chip active" onclick="toggleChip(this)">No experience</span>
+              <span class="chip active" onclick="toggleChip(this)">Entry level</span>
+              <span class="chip" onclick="toggleChip(this)">1–2 yrs</span>
             </div>
           </div>
 
@@ -1081,23 +1378,49 @@
             </div>
           </div>
 
+          <div class="filter-group">
+            <p class="sidebar-label">Company size</p>
+            <div class="chip-group">
+              <span class="chip" onclick="toggleChip(this)">Startup</span>
+              <span class="chip active" onclick="toggleChip(this)">Mid-size</span>
+              <span class="chip active" onclick="toggleChip(this)">Enterprise</span>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <p class="sidebar-label">Posted within</p>
+            <div class="chip-group">
+              <span class="chip active" onclick="toggleChip(this)">24 hrs</span>
+              <span class="chip" onclick="toggleChip(this)">3 days</span>
+              <span class="chip" onclick="toggleChip(this)">1 week</span>
+              <span class="chip" onclick="toggleChip(this)">1 month</span>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <p class="sidebar-label">Degree required</p>
+            <div class="chip-group">
+              <span class="chip active" onclick="toggleChip(this)">None</span>
+              <span class="chip active" onclick="toggleChip(this)">In progress</span>
+              <span class="chip" onclick="toggleChip(this)">Required</span>
+            </div>
+          </div>
+
           <button class="apply-btn" onclick="refreshJobs()">Apply filters ↑</button>
         </div>
 
         <!-- JOB RESULTS -->
         <div class="results-panel">
-          <div class="results-header">
+          <div class="results-header" style="margin-bottom:10px;">
             <p class="results-count"><strong id="result-count">24</strong> matches found</p>
             <select class="sort-select">
               <option>Best match</option>
               <option>Newest</option>
-              <option>Salary</option>
+              <option>Salary ↑</option>
+              <option>Salary ↓</option>
             </select>
           </div>
-
-          <div id="job-list">
-            <!-- Cards injected by JS -->
-          </div>
+          <div id="job-list"></div>
         </div>
       </div>
     </div>
@@ -1229,90 +1552,280 @@
   </div>
 </div>
 
+<!-- JOB DETAIL DRAWER -->
+<div class="job-drawer-overlay" id="job-drawer-overlay" onclick="handleDrawerOverlay(event)">
+  <div class="job-drawer" id="job-drawer">
+    <div class="drawer-handle"></div>
+    <div class="drawer-header">
+      <div class="drawer-logo" id="drawer-logo"></div>
+      <div class="drawer-title-group">
+        <p class="drawer-title" id="drawer-title"></p>
+        <p class="drawer-company" id="drawer-company"></p>
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-badges" id="drawer-badges"></div>
+    <div class="drawer-stats" id="drawer-stats"></div>
+    <div class="drawer-match-row">
+      <span class="drawer-match-pct" id="drawer-match-pct"></span>
+      <span class="drawer-match-label">profile match — you're a strong candidate for this role</span>
+    </div>
+    <p class="drawer-section-title">About the role</p>
+    <p class="drawer-description" id="drawer-desc"></p>
+    <p class="drawer-section-title">Skills they're looking for</p>
+    <div class="drawer-skills" id="drawer-skills"></div>
+    <div class="drawer-actions">
+      <button class="drawer-apply" onclick="closeDrawer()">Apply now →</button>
+      <button class="drawer-save" onclick="this.textContent = this.textContent === '♡ Save' ? '♥ Saved' : '♡ Save'">♡ Save</button>
+    </div>
+  </div>
+</div>
+
 <script>
   const jobs = [
     {
-      logo: "🟦",
-      bg: "#dbeafe",
+      id: 1,
+      logoUrl: "https://logo.clearbit.com/figma.com",
+      logoColor: "#9333ea",
+      logoLetter: "F",
       title: "Product Design Intern",
       company: "Figma",
       type: "Internship",
       location: "Remote",
       field: "Design",
       salary: "$28/hr",
+      salaryNum: 28,
       match: 94,
-      featured: true
+      featured: true,
+      posted: "2h ago",
+      size: "Mid-size",
+      desc: "Join Figma's product design team and work directly on features used by millions of designers worldwide. You'll collaborate with PMs and engineers in a fast-paced, collaborative environment. Ideal for a junior designer with a strong portfolio and curiosity for design systems.",
+      skills: ["Figma", "Prototyping", "User Research", "Design Systems", "Wireframing"]
     },
     {
-      logo: "🟩",
-      bg: "#dcfce7",
+      id: 2,
+      logoUrl: "https://logo.clearbit.com/spotify.com",
+      logoColor: "#16a34a",
+      logoLetter: "S",
       title: "Marketing Coordinator",
       company: "Spotify",
       type: "Part-time",
       location: "Remote",
       field: "Marketing",
       salary: "$22/hr",
+      salaryNum: 22,
       match: 88,
-      featured: false
+      featured: false,
+      posted: "5h ago",
+      size: "Enterprise",
+      desc: "Support Spotify's marketing campaigns across social, email, and partnerships. You'll help track campaign performance, draft content briefs, and coordinate with external vendors. Great for a marketing or communications student looking for real-world brand experience.",
+      skills: ["Social Media", "Copywriting", "Analytics", "Campaign Management", "Canva"]
     },
     {
-      logo: "🟧",
-      bg: "#fef3c7",
+      id: 3,
+      logoUrl: "https://logo.clearbit.com/stripe.com",
+      logoColor: "#6366f1",
+      logoLetter: "S",
       title: "Software Engineer Co-op",
       company: "Stripe",
       type: "Co-op",
       location: "Hybrid",
       field: "Tech",
       salary: "$35/hr",
+      salaryNum: 35,
       match: 81,
-      featured: false
+      featured: false,
+      posted: "1d ago",
+      size: "Enterprise",
+      desc: "Work on Stripe's payments infrastructure with a team of world-class engineers. Co-ops work on real production code from day one. You'll attend sprint planning, ship features, and receive mentorship from senior engineers. Open to CS or CE students in their 2nd year or above.",
+      skills: ["JavaScript", "Python", "APIs", "Git", "SQL"]
+    },
+    {
+      id: 4,
+      logoUrl: "https://logo.clearbit.com/notion.so",
+      logoColor: "#0f0f10",
+      logoLetter: "N",
+      title: "Growth Marketing Intern",
+      company: "Notion",
+      type: "Internship",
+      location: "Remote",
+      field: "Marketing",
+      salary: "$24/hr",
+      salaryNum: 24,
+      match: 85,
+      featured: false,
+      posted: "3h ago",
+      size: "Mid-size",
+      desc: "Drive user acquisition experiments for Notion's self-serve growth team. You'll run A/B tests, analyze funnels, and help craft landing page copy. Looking for a data-curious student comfortable with spreadsheets and basic SQL.",
+      skills: ["Growth", "A/B Testing", "SQL", "Copywriting", "Analytics"]
+    },
+    {
+      id: 5,
+      logoUrl: "https://logo.clearbit.com/canva.com",
+      logoColor: "#0ea5e9",
+      logoLetter: "C",
+      title: "UX Research Assistant",
+      company: "Canva",
+      type: "Part-time",
+      location: "Remote",
+      field: "Design",
+      salary: "$20/hr",
+      salaryNum: 20,
+      match: 79,
+      featured: false,
+      posted: "12h ago",
+      size: "Mid-size",
+      desc: "Assist Canva's research team in conducting usability studies, synthesizing findings, and maintaining research archives. You'll get exposure to diary studies, moderated sessions, and card sorting. Great entry point for psychology or HCI students.",
+      skills: ["User Research", "Usability Testing", "Synthesis", "Docs", "Interviewing"]
+    },
+    {
+      id: 6,
+      logoUrl: "https://logo.clearbit.com/hubspot.com",
+      logoColor: "#f97316",
+      logoLetter: "H",
+      title: "Sales Development Intern",
+      company: "HubSpot",
+      type: "Internship",
+      location: "Hybrid",
+      field: "Marketing",
+      salary: "$19/hr",
+      salaryNum: 19,
+      match: 74,
+      featured: false,
+      posted: "2d ago",
+      size: "Enterprise",
+      desc: "Support HubSpot's inbound sales motion by qualifying leads, running outreach sequences, and shadowing AEs on calls. No sales experience required — just strong communication skills and curiosity about B2B SaaS.",
+      skills: ["Communication", "CRM", "Outreach", "HubSpot", "LinkedIn"]
+    },
+    {
+      id: 7,
+      logoUrl: "https://logo.clearbit.com/linear.app",
+      logoColor: "#5e6ad2",
+      logoLetter: "L",
+      title: "Frontend Engineer Intern",
+      company: "Linear",
+      type: "Internship",
+      location: "Remote",
+      field: "Tech",
+      salary: "$32/hr",
+      salaryNum: 32,
+      match: 77,
+      featured: false,
+      posted: "6h ago",
+      size: "Startup",
+      desc: "Build UI components and contribute to Linear's design system in a small, high-impact engineering team. You'll work directly with the design team and ship code to production. Looking for React-comfortable students who care deeply about craft.",
+      skills: ["React", "TypeScript", "CSS", "Design Systems", "Git"]
+    },
+    {
+      id: 8,
+      logoUrl: "https://logo.clearbit.com/duolingo.com",
+      logoColor: "#58cc02",
+      logoLetter: "D",
+      title: "Content & Social Intern",
+      company: "Duolingo",
+      type: "Part-time",
+      location: "Remote",
+      field: "Marketing",
+      salary: "$18/hr",
+      salaryNum: 18,
+      match: 71,
+      featured: false,
+      posted: "3d ago",
+      size: "Mid-size",
+      desc: "Help Duolingo's social team create viral-worthy content across TikTok, Instagram, and X. You'll pitch ideas, draft scripts, coordinate with creators, and track performance metrics. Perfect for a communications or media student with a creative edge.",
+      skills: ["TikTok", "Content Writing", "Video Editing", "Trend Research", "Analytics"]
     }
   ];
+
+  function logoHTML(job, size = 38, radius = 10) {
+    return `<div style="width:${size}px;height:${size}px;border-radius:${radius}px;border:1px solid var(--border);overflow:hidden;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;">
+      <img src="${job.logoUrl}" alt="${job.company}" style="width:100%;height:100%;object-fit:contain;padding:3px;"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;background:${job.logoColor};color:#fff;font-weight:700;font-size:${Math.round(size*0.38)}px;font-family:var(--font-display);">${job.logoLetter}</div>
+    </div>`;
+  }
 
   function renderJobs(list) {
     const container = document.getElementById('job-list');
     container.innerHTML = '';
     list.forEach(job => {
-      container.innerHTML += `
-        <div class="job-card ${job.featured ? 'featured' : ''}" style="margin-bottom:10px;">
-          ${job.featured ? '<span class="featured-label">⭐ Top match</span>' : ''}
-          <div class="job-card-header">
-            <div class="company-logo" style="background:${job.bg};">${job.logo}</div>
-            <div class="job-meta">
-              <p class="job-title">${job.title}</p>
-              <p class="company-name">${job.company}</p>
-            </div>
+      const card = document.createElement('div');
+      card.className = `job-card ${job.featured ? 'featured' : ''}`;
+      card.style.cursor = 'pointer';
+      card.onclick = () => openDrawer(job);
+      card.innerHTML = `
+        ${job.featured ? '<span class="featured-label">⭐ Top match</span>' : ''}
+        <div class="job-card-header">
+          ${logoHTML(job, 38, 10)}
+          <div class="job-meta">
+            <p class="job-title">${job.title}</p>
+            <p class="company-name">${job.company} · <span class="posted-date" style="display:inline;">${job.posted}</span></p>
           </div>
-          <div class="job-badges">
-            <span class="badge badge-blue">${job.type}</span>
-            <span class="badge badge-green">${job.location}</span>
-            <span class="badge badge-amber">${job.field}</span>
-          </div>
-          <div class="job-footer">
-            <span class="salary-tag">${job.salary}</span>
-            <span class="match-score">
-              <div class="match-bar"><div class="match-fill" style="width:${job.match}%"></div></div>
-              ${job.match}% match
-            </span>
-          </div>
+        </div>
+        <div class="job-badges">
+          <span class="badge badge-blue">${job.type}</span>
+          <span class="badge badge-green">${job.location}</span>
+          <span class="badge badge-amber">${job.field}</span>
+        </div>
+        <div class="job-footer">
+          <span class="salary-tag">${job.salary}</span>
+          <span class="match-score">
+            <div class="match-bar"><div class="match-fill" style="width:${job.match}%"></div></div>
+            ${job.match}% match
+          </span>
         </div>`;
+      container.appendChild(card);
     });
   }
 
   renderJobs(jobs);
 
-  function toggleChip(el) {
-    el.classList.toggle('active');
+  function openDrawer(job) {
+    document.getElementById('drawer-logo').innerHTML = logoHTML(job, 52, 14);
+    document.getElementById('drawer-title').textContent = job.title;
+    document.getElementById('drawer-company').textContent = job.company;
+    document.getElementById('drawer-match-pct').textContent = job.match + '%';
+    document.getElementById('drawer-desc').textContent = job.desc;
+
+    document.getElementById('drawer-badges').innerHTML =
+      `<span class="drawer-badge badge-blue">${job.type}</span>
+       <span class="drawer-badge badge-green">${job.location}</span>
+       <span class="drawer-badge badge-amber">${job.field}</span>`;
+
+    document.getElementById('drawer-stats').innerHTML =
+      `<div class="drawer-stat"><p class="drawer-stat-label">Salary</p><p class="drawer-stat-value">${job.salary}</p></div>
+       <div class="drawer-stat"><p class="drawer-stat-label">Company size</p><p class="drawer-stat-value">${job.size}</p></div>
+       <div class="drawer-stat"><p class="drawer-stat-label">Posted</p><p class="drawer-stat-value">${job.posted}</p></div>`;
+
+    document.getElementById('drawer-skills').innerHTML =
+      job.skills.map(s => `<span class="skill-pill">${s}</span>`).join('');
+
+    // Reset save button
+    document.querySelector('.drawer-save').textContent = '♡ Save';
+
+    document.getElementById('job-drawer-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
 
+  function closeDrawer() {
+    document.getElementById('job-drawer-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function handleDrawerOverlay(e) {
+    if (e.target === document.getElementById('job-drawer-overlay')) closeDrawer();
+  }
+
+  function toggleChip(el) { el.classList.toggle('active'); }
+
   function refreshJobs() {
-    const count = Math.floor(Math.random() * 15) + 18;
+    const count = Math.floor(Math.random() * 10) + jobs.length;
     document.getElementById('result-count').textContent = count;
     const shuffled = [...jobs].sort(() => Math.random() - 0.5);
     renderJobs(shuffled);
   }
 
-  // Salary slider drag
+  // Salary slider
   const thumb = document.getElementById('salary-thumb');
   const fill = document.getElementById('salary-fill');
   const valEl = document.getElementById('salary-val');
@@ -1324,10 +1837,9 @@
     if (!dragging) return;
     const rect = track.getBoundingClientRect();
     let pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    const salary = Math.round(pct * 50);
     fill.style.width = (pct * 100) + '%';
     thumb.style.left = (pct * 100) + '%';
-    valEl.textContent = '$' + salary;
+    valEl.textContent = '$' + Math.round(pct * 50);
   });
   document.addEventListener('mouseup', () => { dragging = false; });
 
@@ -1352,10 +1864,7 @@
   function submitModal() {
     const email = document.getElementById('modal-email').value.trim();
     const name = document.getElementById('modal-name').value.trim();
-    if (!name || !email) {
-      alert('Please fill in your name and email.');
-      return;
-    }
+    if (!name || !email) { alert('Please fill in your name and email.'); return; }
     document.getElementById('modal-form-content').style.display = 'none';
     document.getElementById('success-email').textContent = email;
     document.getElementById('modal-success').style.display = 'block';
