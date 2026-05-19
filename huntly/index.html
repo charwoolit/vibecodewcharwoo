@@ -1845,13 +1845,36 @@
     if (e.target === document.getElementById('modal-overlay')) closeModal();
   }
 
-  function submitModal() {
+  async function submitModal() {
     const email = document.getElementById('modal-email').value.trim();
     const name = document.getElementById('modal-name').value.trim();
+    const major = document.getElementById('modal-major').value;
+
     if (!name || !email) { alert('Please fill in your name and email.'); return; }
-    document.getElementById('modal-form-content').style.display = 'none';
-    document.getElementById('success-email').textContent = email;
-    document.getElementById('modal-success').style.display = 'block';
+
+    const btn = document.querySelector('.modal-submit');
+    btn.textContent = 'Joining...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, major }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || 'Something went wrong');
+
+      document.getElementById('modal-form-content').style.display = 'none';
+      document.getElementById('success-email').textContent = email;
+      document.getElementById('modal-success').style.display = 'block';
+    } catch (err) {
+      alert('Something went wrong. Please try again.');
+      btn.textContent = 'Join the waitlist →';
+      btn.disabled = false;
+    }
   }
 </script>
 </body>
