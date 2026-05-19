@@ -19,7 +19,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: 'Huntly Waitlist <onboarding@resend.dev>',
         to: [email],
-        reply_to: 'your@email.com',
+        reply_to: 'charlottewoo99@gmail.com',
         subject: "You're on the Huntly waitlist 🎉",
         html: `
           <div style="font-family: sans-serif; max-width: 520px; margin: 0 auto; padding: 40px 24px; color: #0f0f10;">
